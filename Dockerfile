@@ -1,15 +1,6 @@
-# Use Eclipse Temurin Java 21 as a parent image
-FROM eclipse-temurin:21-jre-slim
-
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy the application JAR file to the container
-COPY target/your-app-name.jar app.jar
-
-# Expose the port that the application runs on
+FROM eclipse-temurin:21
+RUN mkdir /opt/app
+COPY japp.jar /opt/app
 EXPOSE 8080
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "/opt/app/japp.jar"]
 
